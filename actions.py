@@ -40,7 +40,7 @@ def pick_store():
 Or type \"checkout\" to pay your bills and say your goodbyes.\n").lower()
 
     if choice == "checkout":
-        return False
+        return "checkout"
     else:
         sstore = get_store(choice) # storing the result if there's a store.
         if sstore:
@@ -49,6 +49,7 @@ Or type \"checkout\" to pay your bills and say your goodbyes.\n").lower()
             return sstore
         else:    
             print("No store with that name. Please try again")
+            return "invalid"
 
 
 
@@ -97,9 +98,10 @@ def shop():
     # your code goes here!
     while True:
         stor = pick_store()
-        if stor == False:
+        if stor == "checkout":
             break
-        
+        elif stor == "invalid":
+            continue
         prods = pick_products(cart, stor)
         # if prods != False:
 
